@@ -1,0 +1,239 @@
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: black;
+    color: silver;
+    cursor: default;
+    font-family: "Clear Sans", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+a {
+	text-decoration: none;
+}
+
+h4 {
+	color: dimgray;
+    font-size: 12px;
+	font-weight: normal;
+	line-height: 10px;
+	margin-top: 15px;
+}
+
+h1 {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+h1 a {
+	display: block;
+}
+h1 .left {
+	color: gray;
+	float: left;
+}
+h1 .right {
+	color: dimgray;
+	float: right;
+	font-weight: normal;
+	margin-left: 5px;
+}
+h1 .selected {
+	color: orange;
+}
+
+img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+form {
+    margin: 10px 0;
+    overflow: hidden;
+}
+form .picture {
+	background-image: url('plused-orange.png');
+	background-position: center center;
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	float: left;
+}
+form .last {
+	background-color: dimgray;
+	float: left;
+	width: 280px;
+	padding: 0 10px;
+	margin-right: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+form .count {
+	background-color: dimgray;
+	float: left;
+	padding: 0 10px;
+}
+form label {
+	background-color: dimgray;
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin-right: 10px;
+	padding: 0 10px;
+	width: 280px;
+}
+form input[type=submit] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: dimgray;
+	border: 0 none;
+	border-radius: 0;
+	color: silver;
+	cursor: pointer;
+	display: block;
+	float: left;
+    font-family: "Clear Sans", sans-serif;
+    font-size: 12px;
+	line-height: 20px;
+	height: 20px;
+	padding: 0 10px;
+	outline: 0 none;
+	text-align: center;
+}
+form input[type=file] {
+	display: none;
+}
+
+.center {
+	margin: 0 auto;
+	position: relative;
+	width: 650px;
+}
+
+.photos {
+	overflow: hidden;
+}
+
+.photo {
+    float: left;
+    margin-bottom: 10px;
+    width: 320px;
+}
+.photo:nth-child(2n+1) {
+    margin-right: 10px;
+}
+.photo:nth-last-child(2),
+.photo:nth-last-child(1) {
+    margin-bottom: 0;
+}
+
+.pages {
+	line-height: 10px;
+	position: absolute;
+	right: 0;
+    text-align: right;
+	top: 0;
+}
+.pages a {
+    color: dimgray;
+    padding: 0 4px;
+}
+.pages .selected {
+	color: orange;
+}
+
+.meta {
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.meta span {
+	color: dimgray;
+	padding: 0 2px;
+}
+.meta b {
+	font-weight: normal;
+}
+.meta b:first-child, .meta a {
+	color: orange;
+}
+
+.single img {
+	width: 75%;
+}
+
+.footer {
+	margin: 15px 0;
+}
+.footer a {
+	color: dimgray;
+	display: block;
+	font-size: 11px;
+	height: 16px;
+	line-height: 16px;
+	text-transform: uppercase;
+}
+.footer .left {
+	float: left;
+	padding-right: 10px;
+}
+.footer .right {
+	float: right;
+	padding-left: 10px;
+}
+.footer .logo {
+	width: 32px;
+	margin: 0 auto;
+}
+.footer img {
+	width: 32px;
+	height: 16px;
+}
+
+@media (max-width: 650px) {
+	form label, form .last {
+		width: calc(49% - 40px);
+		margin-right: 2%;
+	}
+	.center, .single img {
+		width: 100%;
+	}
+	.photo {
+		margin-bottom: 2%;
+		width: 49%;
+	}
+    .photo:nth-child(2n+1) {
+        margin-right: 2%;
+    }
+}
+
+@font-face {
+	font-family: "Clear Sans";
+	font-style: normal;
+	font-weight: normal;
+	src: url(clearsans-regular.woff) format("woff");
+}
+
+@font-face {
+	font-family: "Clear Sans";
+	font-style: normal;
+	font-weight: bold;
+	src: url(clearsans-bold.woff) format("woff");
+}
