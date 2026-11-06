@@ -1,7 +1,14 @@
 <?php
-	include 'include/context.php';
+    include dirname(__FILE__) . '/include/context.php';
 
-    $files = array_diff(scandir($storage), array('.', '..'));
+    $photos = array();
+    $dates = array();
+
+    $scanned = scandir($storage);
+    if ($scanned === false) {
+        $scanned = array();
+    }
+    $files = array_diff($scanned, array('.', '..'));
 
     foreach ($files as $file) {
         $date = intval(substr($file, 0, -5));
@@ -9,46 +16,49 @@
         $photos[$date] = $file;
     }
 
-    if (isset($_GET['p']) and abs($_GET['p'])) {
-        $page = abs($_GET['p']);
+    if (isset($_GET['p'])) {
+        $page = abs((int)$_GET['p']);
+        if ($page < 1) {
+            $page = 1;
+        }
     } else {
         $page = 1;
     }
     $limit = 10;
     $offset = $limit * ($page - 1);
     $count = count($photos);
-    $pages = ceil($count / $limit);
+    $pages = $count ? ceil($count / $limit) : 1;
 
     krsort($photos);
-	arsort($dates);
+    arsort($dates);
 
-	$lastDate = reset($dates);
-	$lastFile = key($dates);
+    $lastDate = $dates ? reset($dates) : time();
+    $lastFile = $dates ? key($dates) : null;
     $photos = array_slice($photos, $offset, $limit, true);
 ?>
 
-<? include 'include/header.php'; ?>
-<? include 'include/menu.php'; ?>
+<?php include dirname(__FILE__) . '/include/header.php'; ?>
+<?php include dirname(__FILE__) . '/include/menu.php'; ?>
 
 <div class="photos">
 	<div class="center">
-	    <? foreach ($photos as $key => $photo): ?>
+	    <?php foreach ($photos as $key => $photo): ?>
 	        <div class="photo">
 	            <div class="meta">
 	                <a><?= date('l', $key) ?></a>
 	                <span>&frasl;</span>
 	                <b><?= date('M j, Y', $key) ?></b>
 	                <span>&frasl;</span>
-	                <? if($auth): ?>
-		                <a href="/delete.php?id=<?= $key ?>">delete</a>
-		            <? else: ?>
-		                <b><?= date('H:m', $key) ?></b>
-		            <? endif; ?>
+	                <?php if($auth): ?>
+		                <a href="/delete.php?id=<?= (int)$key ?>">delete</a>
+		            <?php else: ?>
+		                <b><?= date('H:i', $key) ?></b>
+		            <?php endif; ?>
 	            </div>
-	            <img src="/uploads/<?= $photo ?>" width="320" height="320" />
+	            <img src="/uploads/<?= htmlspecialchars($photo, ENT_QUOTES) ?>" width="320" height="320" />
 	        </div>
-	    <? endforeach; ?>
+	    <?php endforeach; ?>
 	</div>
 </div>
 
-<? include 'include/footer.php'; ?>
+<?php include dirname(__FILE__) . '/include/footer.php'; ?>

@@ -5,15 +5,15 @@
 
     date_default_timezone_set('Europe/Bucharest');
 
-	$password = 'md5 of your password as string';
+    $password = 'md5 of your password as string';
 
     if (isset($_COOKIE['user']) and $_COOKIE['user'] === $password) {
-        $auth = True;
+        $auth = true;
     } else {
-	    $auth = False;
+        $auth = false;
     }
 
-    $storage = getcwd() . "/uploads/";
+    $storage = dirname(dirname(__FILE__)) . '/uploads/';
 
     function ago($past) {
         $time = time() - $past;
@@ -32,6 +32,7 @@
             $numberOfUnits = round($time / $unit);
             return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
         }
+        return '1 second';
     }
 
     function redirect() {

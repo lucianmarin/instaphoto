@@ -1,16 +1,39 @@
 <?php
-	include 'include/context.php';
+	include dirname(__FILE__) . '/include/context.php';
 
-    $fn = $_FILES['imageUpload']['tmp_name'];
-    $max = 640;
+	if (!$auth) {
+		redirect();
+	}
 
-    list($width, $height, $type, $attr) = getimagesize($fn);
-    $exif = exif_read_data($fn);
+	if (!isset($_FILES['imageUpload']) || $_FILES['imageUpload']['error'] !== UPLOAD_ERR_OK) {
+		redirect();
+	}
 
-    $src = imagecreatefromstring(file_get_contents($fn));
-    $dst = imagecreatetruecolor($max, $max);
+	$fn = $_FILES['imageUpload']['tmp_name'];
+	if (!is_uploaded_file($fn)) {
+		redirect();
+	}
 
-    if ($width > $height) {
+	$max = 640;
+
+	$imageInfo = getimagesize($fn);
+	if ($imageInfo === false) {
+		redirect();
+	}
+	list($width, $height, $type, $attr) = $imageInfo;
+
+	$exif = exif_read_data($fn);
+	if (!is_array($exif)) {
+		$exif = array();
+	}
+
+	$src = imagecreatefromstring(file_get_contents($fn));
+	if ($src === false) {
+		redirect();
+	}
+	$dst = imagecreatetruecolor($max, $max);
+
+	if ($width > $height) {
 	    $x_point = ($width - $height) / 2;
 		imagecopyresampled($dst, $src, 0, 0, $x_point, 0, $max, $max, $height, $height);
     } else {
@@ -35,15 +58,16 @@
     }
 
     if (isset($exif['DateTimeOriginal'])) {
-        $target = $storage . strtotime($exif['DateTimeOriginal']) . '.jpeg';
+        $timestamp = strtotime($exif['DateTimeOriginal']);
+        if ($timestamp === false) {
+            $timestamp = time();
+        }
+        $target = $storage . $timestamp . '.jpeg';
 	} else {
 		$target = $storage . time() . '.jpeg';
 	}
 
     imagejpeg($dst, $target);
-
-    imagedestroy($src);
-    imagedestroy($dst);
 
     redirect();
 ?>

@@ -1,21 +1,21 @@
 html {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 }
 
 * {
 	margin: 0;
 	padding: 0;
-    -webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: black;
-    color: silver;
-    cursor: default;
-    font-family: "Clear Sans", sans-serif;
-    font-size: 12px;
-    line-height: 20px;
+	background-color: black;
+	color: silver;
+	cursor: default;
+	font-family: "Clear Sans", sans-serif;
+	font-size: 12px;
+	line-height: 20px;
 }
 
 a {
@@ -24,18 +24,18 @@ a {
 
 h4 {
 	color: dimgray;
-    font-size: 12px;
+	font-size: 12px;
 	font-weight: normal;
 	line-height: 10px;
 	margin-top: 15px;
 }
 
 h1 {
-    font-size: 24px;
-    line-height: 30px;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-    overflow: hidden;
+	font-size: 24px;
+	line-height: 30px;
+	letter-spacing: -1px;
+	margin-bottom: 10px;
+	overflow: hidden;
 }
 h1 a {
 	display: block;
@@ -55,14 +55,14 @@ h1 .selected {
 }
 
 img {
-    display: block;
-    height: auto;
-    width: 100%;
+	display: block;
+	height: auto;
+	width: 100%;
 }
 
 form {
-    margin: 10px 0;
-    overflow: hidden;
+	margin: 10px 0;
+	overflow: hidden;
 }
 form .picture {
 	background-image: url('plused-orange.png');
@@ -107,8 +107,8 @@ form input[type=submit] {
 	cursor: pointer;
 	display: block;
 	float: left;
-    font-family: "Clear Sans", sans-serif;
-    font-size: 12px;
+	font-family: "Clear Sans", sans-serif;
+	font-size: 12px;
 	line-height: 20px;
 	height: 20px;
 	padding: 0 10px;
@@ -130,39 +130,39 @@ form input[type=file] {
 }
 
 .photo {
-    float: left;
-    margin-bottom: 10px;
-    width: 320px;
+	float: left;
+	margin-bottom: 10px;
+	width: 320px;
 }
 .photo:nth-child(2n+1) {
-    margin-right: 10px;
+	margin-right: 10px;
 }
 .photo:nth-last-child(2),
 .photo:nth-last-child(1) {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .pages {
 	line-height: 10px;
 	position: absolute;
 	right: 0;
-    text-align: right;
+	text-align: right;
 	top: 0;
 }
 .pages a {
-    color: dimgray;
-    padding: 0 4px;
+	color: dimgray;
+	padding: 0 4px;
 }
 .pages .selected {
 	color: orange;
 }
 
 .meta {
-    font-size: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
+	font-size: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
 }
 .meta span {
 	color: dimgray;
@@ -219,21 +219,21 @@ form input[type=file] {
 		margin-bottom: 2%;
 		width: 49%;
 	}
-    .photo:nth-child(2n+1) {
-        margin-right: 2%;
-    }
+	.photo:nth-child(2n+1) {
+		margin-right: 2%;
+	}
 }
 
 @font-face {
 	font-family: "Clear Sans";
 	font-style: normal;
 	font-weight: normal;
-	src: url(clearsans-regular.woff) format("woff");
+	src: url(clearsans/regular.woff) format("woff");
 }
 
 @font-face {
 	font-family: "Clear Sans";
 	font-style: normal;
 	font-weight: bold;
-	src: url(clearsans-bold.woff) format("woff");
+	src: url(clearsans/bold.woff) format("woff");
 }

@@ -1,4 +1,6 @@
-# instaphoto
+# Instaphoto
+
+![screenshot](screenshot.jpg)
 
 Minimalist self-hosted photo sharing web app built with PHP, GD, and EXIF metadata parsing.
 
