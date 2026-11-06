@@ -65,12 +65,10 @@ form {
 	overflow: hidden;
 }
 form .picture {
-	background-image: url('plused-orange.png');
-	background-position: center center;
-	background-size: cover;
 	width: 20px;
 	height: 20px;
 	float: left;
+	display: block;
 }
 form .last {
 	background-color: dimgray;
